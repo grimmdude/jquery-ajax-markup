@@ -4,7 +4,7 @@ Simple jQuery plugin to fill a container with ajax results using HTML markup onl
 ##Usage
 
 With this markup the contents of the div will be replaced by the response of the url.
-```html\
+```html
 <div data-ajax-url="http://example.com/api/product"></div>
 ```
 
