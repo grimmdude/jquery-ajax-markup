@@ -1,3 +1,13 @@
+/**
+* jquery-ajax-markup
+*
+* Copyright (c) 2015 Garrett Grimm (grimmdude.com)
+* Dual licensed under the MIT and GPL licenses:
+* http://www.opensource.org/licenses/mit-license.php
+* http://www.gnu.org/licenses/gpl.html
+*
+*/
+
 (function ( $ ) {
     $(function() {
         var urls = {}; // url : dataType 
