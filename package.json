@@ -1,6 +1,6 @@
 {
   "name": "jquery-ajax-markup",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "Simple jQuery plugin to fill a container with ajax results using HTML markup only.",
   "main": "jquery-ajax-markup.js",
   "scripts": {

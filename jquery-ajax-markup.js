@@ -38,13 +38,18 @@
                                 var innerText = $(element).text();
 
                                 if (innerText !== '') {
-                                    data = response[innerText];
+                                    data = eval('response.' + innerText);
 
                                 } else {
                                     data = response;
                                 }
 
-                                $(element).text(data); 
+                                if (dataType.toLowerCase() == 'html') {
+                                    $(element).html(data).show(); 
+
+                                } else {
+                                   $(element).text(data).show();  
+                                }
                             }
                         });
                     },
