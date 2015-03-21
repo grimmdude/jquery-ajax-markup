@@ -3,7 +3,7 @@
   "main": "jquery-ajax-markup.js",
   "version": "1.2.0",
   "dependencies": {
-    "jquery": ">=1.7"
+    "jquery": ">=1.6"
   },
   "homepage": "https://github.com/grimmdude/jquery-ajax-markup",
   "authors": [

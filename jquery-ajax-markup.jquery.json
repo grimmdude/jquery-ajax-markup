@@ -1,0 +1,46 @@
+{
+    "name": "ajax-markup",
+    "title": "jQuery Ajax Markup",
+    "description": "Simple jQuery plugin to fill a container with ajax results using HTML markup only.",
+    "keywords": [
+        "ajax",
+        "markup",
+        "html",
+        "simple",
+		"dynamic"
+    ],
+    "version": "1.2.0",
+    "author": {
+        "name": "Garrett Grimm",
+        "url": "http://grimmdude.com"
+    },
+    "licenses": [
+		{
+			"type": "GPL-3.0",
+			"url": "http://opensource.org/licenses/GPL-3.0"
+		}
+	],
+    "dependencies": {
+        "jquery": ">=1.6"
+    },
+    "homepage": "https://github.com/grimmdude/jquery-ajax-markup",
+	"demo": "https://github.com/grimmdude/jquery-ajax-markup",
+	"download": "https://github.com/grimmdude/jquery-ajax-markup/archive/master.zip",
+	"docs": "https://github.com/grimmdude/jquery-ajax-markup",
+	"bugs": "https://github.com/grimmdude/jquery-ajax-markup/issues",
+    "contributors": [
+        {
+            "name": "Garrett Grimm",
+            "url": "http://grimmdude.com"
+        }
+    ],
+    "files": [
+        "jquery-ajax-markup.js"
+    ],
+  	"maintainers": [
+    	{
+      		"name": "Garrett Grimm",
+      		"url": "http://grimmdude.com"
+    	}
+  	]
+}
