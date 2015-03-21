@@ -25,6 +25,8 @@
 
         // Now call each url and cache the response
         $.each(urls, function(url, dataType) {
+            var data;
+
             $.ajax(url, {
                     dataType: dataType,
                     success: function(response) {
@@ -35,11 +37,11 @@
                             if (elementData.ajaxUrl == url) {
                                 var innerText = $(element).text();
 
-                                if (innerText != '') {
-                                    var data = response[innerText];
+                                if (innerText !== '') {
+                                    data = response[innerText];
 
                                 } else {
-                                    var data = response;
+                                    data = response;
                                 }
 
                                 $(element).text(data); 
