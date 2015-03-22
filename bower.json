@@ -9,7 +9,7 @@
   "authors": [
     "Garrett Grimm <grimmdude@gmail.com>"
   ],
-  "description": "jQuery plugin to make an ajax call and use the response using HTML markup only.",
+  "description": "jQuery plugin to make an ajax call and use the response with HTML markup only.",
   "keywords": [
     "jquery",
     "ajax",
