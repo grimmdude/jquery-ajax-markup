@@ -1,7 +1,7 @@
 {
   "name": "jquery-ajax-markup",
   "main": "jquery-ajax-markup.js",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "dependencies": {
     "jquery": ">=1.6"
   },
@@ -9,7 +9,7 @@
   "authors": [
     "Garrett Grimm <grimmdude@gmail.com>"
   ],
-  "description": "Simple jQuery plugin to fill a container with ajax results using HTML markup only.",
+  "description": "jQuery plugin to make an ajax call and use the response using HTML markup only.",
   "keywords": [
     "jquery",
     "ajax",
