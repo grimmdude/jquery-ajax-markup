@@ -11,11 +11,12 @@ If the expected response of the ajax call is HTML simply specify `data-ajax-type
 ```
 
 ###JSON data
-Any time `~property~` is used in the element text or attribute values it is replaced with the appropriate property of the json returned in the ajax call.
 
-If the expected response of the ajax call is JSON then specify `data-ajax-type="json"`.  The properties of the JSON object will be accessible like `~property~`.  In this example the `~name~` text will be replaced by the `name` property of the returned JSON.  This also works in attribute values.
+If the expected response of the ajax call is JSON then specify `data-ajax-type="json"`.  The properties of the JSON object will be accessible like `~property~`.  In this example the `~name~` and `~sku~` text will be replaced by the `name` and `sku` property of the returned JSON.  This works in attribute values as well as inner text.
 ```html
-<div data-ajax-url="http://example.com/api/product" data-ajax-type="json">~name~</div>
+<div data-ajax-url="http://example.com/api/product" data-ajax-type="json" class="~sku~ active">
+	~name~
+</div>
 ```
 
 Note that urls are only requested once even if multiple elements use the same one.
