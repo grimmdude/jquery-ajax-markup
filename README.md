@@ -1,6 +1,6 @@
 # jquery-ajax-markup
 This is a jQuery plugin that allows you to make ajax calls directly from HTML elements without writing any JavaScript.  The idea 
-came from the need to load and display data on a page in multiple places once it was all loaded up.  It's usage is inspired a bit by AngularJS, but obviously much simpler and lighter.
+came from the need to load and display data on a page in multiple places after the page was all loaded up.  It's usage is inspired a bit by AngularJS, but obviously much simpler and lighter.
 
 ##Usage
 
