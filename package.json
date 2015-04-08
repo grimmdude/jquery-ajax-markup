@@ -1,6 +1,6 @@
 {
   "name": "jquery-ajax-markup",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "description": "jQuery plugin to make an ajax call and use the response with HTML markup only.",
   "main": "jquery-ajax-markup.js",
   "scripts": {
