@@ -17,7 +17,7 @@
         // First get a list of all the urls to be called.
         $ajaxMarkupElements.each(function (index, element) {
             var elementData = $(element).data();
-            var dataType = elementData.ajaxType || false;
+            var dataType = elementData.ajaxType || '';
 
             if (!urls.hasOwnProperty(elementData.ajaxUrl)) {
                 urls[elementData.ajaxUrl] = dataType;
