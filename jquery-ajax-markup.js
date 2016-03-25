@@ -9,34 +9,55 @@
 */
 
 (function ($) {
-    $(function () {
-        var urls = {}; // url : dataType 
+    var Url = function(params) {
+        this.url = params.url || '';
+        this.dataType = params.dataType || '';
+        this.data;
+    };
+
+
+    $.ajaxMarkup = function(options) {
+        options = $.extend({
+            reload : false, // If urls should be reloaded
+            container : null // jQuery selector
+        }, options);
+
+        var urls = []; // Array of Url objects
+
         var regEx = /~([\s\S]*?)~/g;
-        var $ajaxMarkupElements = $('*[data-ajax-url]');
+        var $ajaxMarkupElements;
+        
+        if (options.container) {
+            $ajaxMarkupElements = $(options.container).find('*[data-ajax-url]');
+
+        } else {
+            $ajaxMarkupElements = $('*[data-ajax-url]');
+        }
 
         // First get a list of all the urls to be called.
         $ajaxMarkupElements.each(function (index, element) {
             var elementData = $(element).data();
             var dataType = elementData.ajaxType || '';
 
-            if (!urls.hasOwnProperty(elementData.ajaxUrl)) {
-                urls[elementData.ajaxUrl] = dataType;
+            if ((!elementData.hasOwnProperty('ajaxLoaded') || options.reload) && !urls.hasOwnProperty(elementData.ajaxUrl)) {
+                urls.push(new Url({url: elementData.ajaxUrl, dataType: dataType}));
             }
         });
 
         // Now call each url and handle the data replacement
-        $.each(urls, function (url, dataType) {
+        $.each(urls, function (index, url) {//url, dataType
             var data;
 
-            $.ajax(url, {
-                    dataType: dataType,
+            $.ajax(url.url, {
+                    dataType: url.dataType,
                     success: function (response) {
+                        url.data = response;
                         // Now cycle through each element using this url and populate the data
                         $ajaxMarkupElements.each(function (index, element) {
                             var $this = $(this);
                             var elementData = $(element).data();
 
-                            if (elementData.ajaxUrl === url) {
+                            if (elementData.ajaxUrl === url.url) {
                                 var innerText = $(element).text();
 
                                 // Go through each attribute and execute any variables
@@ -57,12 +78,14 @@
                                     data = response;
                                 }
 
-                                if (dataType.toLowerCase() === 'html') {
+                                if (url.dataType.toLowerCase() === 'html') {
                                     $(element).html(data).show(); 
 
                                 } else {
                                    $(element).text(data).show();
                                 }
+
+                                $this.data('ajaxLoaded', true);
                             }
                         });
                     },
@@ -71,5 +94,14 @@
                     }
             });
         });
+
+        // Store data to use later if needed.
+        $('html').data('ajaxMarkupData', urls);
+
+        return $ajaxMarkupElements;
+    };
+
+    $(function () {
+        $.ajaxMarkup();
     });
 }(jQuery));
