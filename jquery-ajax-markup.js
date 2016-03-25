@@ -44,7 +44,7 @@
             var elementData = $(element).data();
             var dataType = elementData.ajaxType || '';
 
-            if ((!elementData.hasOwnProperty('ajaxLoaded') || options.reload) && !urls.hasOwnProperty(elementData.ajaxUrl)) {
+            if ((!elementData.hasOwnProperty('ajaxLoaded') || options.reload) && !$.grep(urls, function(item) {return item.url == elementData.ajaxUrl;}).length) {
                 urls.push(new Url({url: elementData.ajaxUrl, dataType: dataType}));
             }
         });
