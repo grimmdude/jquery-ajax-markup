@@ -15,11 +15,20 @@
         this.data;
     };
 
+    /**
+     * Wrapper for $.ajaxMarkup({collection : $('#selector')})
+     * @return jQuery object
+     */
+    $.fn.ajaxMarkup = function() {
+        $.ajaxMarkup({collection : this});
+        return this;
+    };
 
     $.ajaxMarkup = function(options) {
         options = $.extend({
-            reload : false, // If urls should be reloaded
-            container : null // jQuery selector
+            reload          : false, // If urls should be reloaded
+            container       : null,  // jQuery selector string
+            collection      : null   // jQuery object.  If passed this overrides container.  Mainly used as $('#selector').ajaxMarkup()
         }, options);
 
         var urls = []; // Array of Url objects
@@ -27,7 +36,15 @@
         var regEx = /~([\s\S]*?)~/g;
         var $ajaxMarkupElements;
         
-        if (options.container) {
+        if (options.collection) {
+            $ajaxMarkupElements = options.collection.filter(function() {
+                var urlAttr = $(this).attr('data-ajax-url');
+                if (typeof urlAttr !== typeof undefined && urlAttr !== false) {
+                    return true;
+                }
+            });
+
+        } else if (options.container) {
             $ajaxMarkupElements = $(options.container).find('*[data-ajax-url]');
 
         } else {
@@ -45,7 +62,7 @@
         });
 
         // Now call each url and handle the data replacement
-        $.each(urls, function (index, url) {//url, dataType
+        $.each(urls, function (index, url) {
             var data;
 
             $.ajax(url.url, {
