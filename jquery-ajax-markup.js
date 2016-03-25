@@ -63,7 +63,7 @@
                             var elementData = $(element).data();
 
                             if (elementData.ajaxUrl === url.url) {
-                                var innerText = $(element).text();
+                                var innerText = $(element).html();
 
                                 // Go through each attribute and execute any variables
                                 $.each(this.attributes, function (index, attribute) {
@@ -83,12 +83,15 @@
                                     data = response;
                                 }
 
+                                /*
                                 if (url.dataType.toLowerCase() === 'html') {
                                     $(element).html(data).show(); 
 
                                 } else {
                                    $(element).text(data).show();
                                 }
+                                */
+                                $(element).html(data).show(); 
 
                                 $this.data('ajaxLoaded', true);
                             }
@@ -107,6 +110,6 @@
     };
 
     $(function () {
-        $('html').ajaxMarkup({container:true});
+        $(':root').ajaxMarkup({container:true});
     });
 }(jQuery));
