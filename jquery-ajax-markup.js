@@ -15,20 +15,11 @@
         this.data;
     };
 
-    /**
-     * Wrapper for $.ajaxMarkup({collection : $('#selector')})
-     * @return jQuery object
-     */
-    $.fn.ajaxMarkup = function() {
-        $.ajaxMarkup({collection : this});
-        return this;
-    };
 
-    $.ajaxMarkup = function(options) {
+    $.fn.ajaxMarkup = function(options) {
         options = $.extend({
             reload          : false, // If urls should be reloaded
-            container       : null,  // jQuery selector string
-            collection      : null   // jQuery object.  If passed this overrides container.  Mainly used as $('#selector').ajaxMarkup()
+            container       : false   // jQuery selector string
         }, options);
 
         var urls = []; // Array of Url objects
@@ -36,19 +27,16 @@
         var regEx = /~([\s\S]*?)~/g;
         var $ajaxMarkupElements;
         
-        if (options.collection) {
-            $ajaxMarkupElements = options.collection.filter(function() {
+        if (options.container) {
+            $ajaxMarkupElements = this.find('*[data-ajax-url]');
+
+        } else {
+            $ajaxMarkupElements = this.filter(function() {
                 var urlAttr = $(this).attr('data-ajax-url');
                 if (typeof urlAttr !== typeof undefined && urlAttr !== false) {
                     return true;
                 }
             });
-
-        } else if (options.container) {
-            $ajaxMarkupElements = $(options.container).find('*[data-ajax-url]');
-
-        } else {
-            $ajaxMarkupElements = $('*[data-ajax-url]');
         }
 
         // First get a list of all the urls to be called.
@@ -115,10 +103,10 @@
         // Store data to use later if needed.
         $('html').data('ajaxMarkupData', urls);
 
-        return $ajaxMarkupElements;
+        return this;
     };
 
     $(function () {
-        $.ajaxMarkup();
+        $('html').ajaxMarkup({container:true});
     });
 }(jQuery));

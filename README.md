@@ -6,7 +6,7 @@ came from the need to load and display data on a page in multiple places after t
 To use simply add `data-ajax-url="http://example.com/api"` to any element.  By default the response from the url will be inserted 
 into the element as text. 
 
-Elements are parsed for ajax requests automatically on page load, though you can manually trigger the parser by calling `$.ajaxMarkup({options})`.
+All elements within the root `html` element are parsed for ajax requests automatically on page load, though you can manually trigger the parser by calling `$('#selector').ajaxMarkup({options})`.
 
 #### `$.ajaxMarkup({options})`
 <table>
@@ -16,7 +16,7 @@ Elements are parsed for ajax requests automatically on page load, though you can
     </tr>
     <tr>
         <td><b>container</b></td>
-        <td>jQuery selector string to specify the container to parse for ajax markup (optional)</td>
+        <td>If `true` the selector will be treated as a container and all children elements will be parsed for `data-ajax-markup` attributes.  Default `false`.</td>
     </tr>
     <tr>
         <td><b>reload</b></td>
