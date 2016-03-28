@@ -26,7 +26,7 @@
 
         var regEx = /~([\s\S]*?)~/g;
         var $ajaxMarkupElements;
-        
+
         if (options.container) {
             $ajaxMarkupElements = this.find('*[data-ajax-url]');
 
@@ -74,7 +74,7 @@
                                 });
 
                                 // Now do the same for inner text
-                                if (innerText !== '' && dataType != 'html') {
+                                if (innerText !== '' && url.dataType.toLowerCase() != 'html') {
                                     data = innerText.replace(regEx, function (x) {
                                         return eval(('response.' + x).replace(/~/g, ''));
                                     });
@@ -85,13 +85,13 @@
 
                                 /*
                                 if (url.dataType.toLowerCase() === 'html') {
-                                    $(element).html(data).show(); 
+                                    $(element).html(data).show();
 
                                 } else {
                                    $(element).text(data).show();
                                 }
                                 */
-                                $(element).html(data).show(); 
+                                $(element).html(data).show();
 
                                 $this.data('ajaxLoaded', true);
                             }
