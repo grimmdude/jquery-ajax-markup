@@ -74,7 +74,7 @@
                                 });
 
                                 // Now do the same for inner text
-                                if (innerText !== '') {
+                                if (innerText !== '' && dataType != 'html') {
                                     data = innerText.replace(regEx, function (x) {
                                         return eval(('response.' + x).replace(/~/g, ''));
                                     });
